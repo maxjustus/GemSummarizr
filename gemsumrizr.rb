@@ -13,8 +13,10 @@ Twitter.configure do |config|
   config.oauth_token_secret = OAUTH_TOKEN_SECRET
 end
 
+last_run_file = File.join(File.dirname(__FILE__), 'last_run')
+
 last_run = ''
-File.open('last_run', 'r') do |f|
+File.open(last_run_file, 'r') do |f|
   last_run = f.gets
   if last_run.to_s != ''
     last_run = DateTime.parse(last_run)
@@ -60,6 +62,6 @@ posts.each do |post|
   client.update(new_text)
 end
 
-File.open('last_run', 'w') do |f|
+File.open(last_run_file, 'w') do |f|
   f.puts(DateTime.now.to_s)
 end
