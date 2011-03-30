@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'rubygems'
 require File.join(File.dirname(__FILE__), 'secretz')
 require 'twitter'
